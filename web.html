@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sri Balaji House Cleaning Service</title>
+  <meta name="description" content="Sri Balaji House Cleaning Service - professional home, bathroom, kitchen, sofa, and deep cleaning services across Hyderabad." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap');
+
+    :root {
+      --bg: #081018;
+      --bg2: #0d1724;
+      --card: rgba(255, 255, 255, 0.08);
+      --card2: rgba(255, 255, 255, 0.12);
+      --text: #eef4ff;
+      --muted: rgba(238, 244, 255, 0.72);
+      --accent: #f6c358;
+      --accent2: #64d2ff;
+      --accent3: #8f7cff;
+      --line: rgba(255, 255, 255, 0.12);
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --radius2: 34px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(100, 210, 255, 0.22), transparent 28%),
+        radial-gradient(circle at top right, rgba(246, 195, 88, 0.18), transparent 24%),
+        radial-gradient(circle at bottom left, rgba(143, 124, 255, 0.16), transparent 26%),
+        linear-gradient(180deg, #050b12 0%, var(--bg) 48%, #071018 100%);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.6), transparent 85%);
+      opacity: 0.4;
+      z-index: 0;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(100% - 32px, var(--max));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(4, 10, 18, 0.68);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(246,195,88,0.95), rgba(100,210,255,0.95));
+      color: #06111a;
+      font-weight: 900;
+      box-shadow: 0 10px 30px rgba(100,210,255,0.25);
+      flex: 0 0 auto;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.05rem, 2vw, 1.4rem);
+      line-height: 1.1;
+      letter-spacing: 0.2px;
+    }
+
+    .brand p {
+      margin: 3px 0 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .navlinks a {
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .navlinks a:hover { color: var(--text); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+    .btn.primary {
+      background: linear-gradient(135deg, var(--accent), #ffe39d);
+      color: #10202e;
+      box-shadow: 0 18px 35px rgba(246, 195, 88, 0.28);
+    }
+    .btn.secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 72px 0 38px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h2 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 6vw, 5.7rem);
+      line-height: 0.96;
+      letter-spacing: -1.8px;
+    }
+
+    .hero h2 span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      font-size: clamp(1rem, 2vw, 1.13rem);
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 18px 0 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat b {
+      display: block;
+      font-size: 1.45rem;
+      margin-bottom: 6px;
+    }
+    .stat span { color: var(--muted); font-size: 0.95rem; }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius2);
+      overflow: hidden;
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.14), rgba(255,255,255,0.05)),
+        radial-gradient(circle at top, rgba(100,210,255,0.25), transparent 42%),
+        rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      min-height: 620px;
+      padding: 24px;
+      isolation: isolate;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(30px);
+      opacity: 0.55;
+      z-index: -1;
+    }
+
+    .hero-card::before {
+      width: 180px; height: 180px;
+      top: 20px; right: 0;
+      background: rgba(246,195,88,0.35);
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .hero-card::after {
+      width: 220px; height: 220px;
+      bottom: 0; left: -40px;
+      background: rgba(100,210,255,0.24);
+      animation: float 11s ease-in-out infinite reverse;
+    }
+
+    .card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(5, 12, 20, 0.55);
+      border: 1px solid rgba(255,255,255,0.14);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-size: 0.92rem;
+    }
+
+    .mock-panel {
+      background: rgba(5,12,20,0.45);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 28px;
+      padding: 20px;
+      margin-top: 14px;
+      backdrop-filter: blur(10px);
+    }
+
+    .service-preview {
+      display: grid;
+      gap: 14px;
+    }
+
+    .preview-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.25s ease, background 0.25s ease;
+    }
+
+    .preview-row:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); }
+
+    .preview-row strong { display: block; margin-bottom: 4px; }
+    .preview-row small { color: var(--muted); }
+    .price {
+      font-weight: 800;
+      color: var(--accent);
+      flex: 0 0 auto;
+    }
+
+    .floating-tags {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.10);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    section {
+      padding: 24px 0 18px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h3 {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      letter-spacing: -0.7px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 58ch;
+      line-height: 1.7;
+    }
+
+    .grid-3, .grid-4, .grid-2 {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .glass {
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.05));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+
+    .service-card, .feature-card, .area-card, .contact-card, .testimonial, .faq-item {
+      padding: 22px;
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .service-card:hover, .feature-card:hover, .area-card:hover, .contact-card:hover, .testimonial:hover, .faq-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255,255,255,0.20);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, rgba(100,210,255,0.35), rgba(246,195,88,0.28));
+      margin-bottom: 16px;
+      font-size: 1.4rem;
+    }
+
+    .service-card h4, .feature-card h4, .area-card h4, .contact-card h4, .testimonial h4, .faq-item h4 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .service-card p, .feature-card p, .area-card p, .contact-card p, .testimonial p, .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .area-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+
+    .area-list span {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #edf3ff;
+      font-size: 0.88rem;
+    }
+
+    .contact-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .contact-line {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 12px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .contact-line b { color: var(--text); }
+
+    .footer {
+      padding: 34px 0 48px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.95rem;
+    }
+
+    .pulse {
+      position: relative;
+    }
+
+    .pulse::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 999px;
+      border: 1px solid rgba(100,210,255,0.22);
+      animation: pulse 2.6s infinite;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+    .delay-1 { animation-delay: 0.12s; }
+    .delay-2 { animation-delay: 0.22s; }
+    .delay-3 { animation-delay: 0.32s; }
+    .delay-4 { animation-delay: 0.42s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px) scale(1); }
+      50% { transform: translateY(-18px) translateX(12px) scale(1.06); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.92); opacity: 0.8; }
+      70% { transform: scale(1.18); opacity: 0; }
+      100% { transform: scale(1.18); opacity: 0; }
+    }
+
+    /* Responsive */
+    @media (max-width: 1050px) {
+      .hero-grid, .grid-4 { grid-template-columns: 1fr; }
+      .stats, .grid-3, .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .hero-card { min-height: auto; }
+    }
+
+    @media (max-width: 760px) {
+      .nav { flex-direction: column; align-items: flex-start; }
+      .navlinks { justify-content: flex-start; }
+      .hero { padding-top: 36px; }
+      .stats, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .hero h2 { letter-spacing: -1px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="logo">SB</div>
+          <div>
+            <h1>Sri Balaji House Cleaning Service</h1>
+            <p>Premium home cleaning across Hyderabad</p>
+          </div>
+        </div>
+        <div class="navlinks">
+          <a href="#services">Services</a>
+          <a href="#areas">Areas</a>
+          <a href="#why">Why Us</a>
+          <a href="#contact">Contact</a>
+          <a class="btn primary pulse" href="tel:+919000000000">Call Now</a>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <div class="eyebrow fade-up">✨ Deep cleaning • Doorstep service • Same day booking</div>
+          <h2 class="fade-up delay-1">Clean Spaces, <span>Fresh Homes</span>, Happy Families.</h2>
+          <p class="fade-up delay-2">
+            Sri Balaji House Cleaning Service delivers professional, reliable and high-quality cleaning for apartments, villas, individual houses and commercial spaces.
+            We cover Hyderabad with trained staff, modern equipment and careful attention to every corner.
+          </p>
+
+          <div class="hero-actions fade-up delay-3">
+            <a class="btn primary" href="https://wa.me/918331885681?text=Hi%20Sri%20Balaji%20House%20Cleaning%20Service,%20I%20want%20to%20book%20a%20home%20cleaning%20service.%20Please%20share%20details." target="_blank" rel="noopener">WhatsApp Booking</a>
+            <a class="btn secondary" href="#contact">Get Free Quote</a>
+          </div>
+
+          <div class="stats fade-up delay-4">
+            <div class="stat">
+              <b>24/7</b>
+              <span>Booking support on call & WhatsApp</span>
+            </div>
+            <div class="stat">
+              <b>100%</b>
+              <span>Professional, trained and verified staff</span>
+            </div>
+            <div class="stat">
+              <b>Hyderabad</b>
+              <span>All major areas and nearby localities</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card fade-up delay-2">
+          <div class="card-badge">⭐ Trusted Cleaning Experts in Hyderabad</div>
+          <div class="mock-panel">
+            <div class="service-preview">
+              <div class="preview-row">
+                <div>
+                  <strong>Full Home Deep Cleaning</strong>
+                  <small>Bedrooms, hall, kitchen, bathrooms, balcony</small>
+                </div>
+                <div class="price">Best Value</div>
+              </div>
+              <div class="preview-row">
+                <div>
+                  <strong>Bathroom & Kitchen Cleaning</strong>
+                  <small>Tile, tap, sink, stains, scrub & sanitization</small>
+                </div>
+                <div class="price">Fast Service</div>
+              </div>
+              <div class="preview-row">
+                <div>
+                  <strong>Sofa & Mattress Cleaning</strong>
+                  <small>Foam, vacuum, stain removal & fresh finish</small>
+                </div>
+                <div class="price">Premium</div>
+              </div>
+              <div class="preview-row">
+                <div>
+                  <strong>Move-in / Move-out Cleaning</strong>
+                  <small>Perfect for shifting, rent, and resale prep</small>
+                </div>
+                <div class="price">On Demand</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-tags">
+            <span class="tag">Deep Cleaning</span>
+            <span class="tag">Bathroom Scrubbing</span>
+            <span class="tag">Kitchen Sanitization</span>
+            <span class="tag">Sofa Shampoo</span>
+            <span class="tag">Floor Polishing</span>
+            <span class="tag">Pest-Free Finish</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="section-head">
+        <div>
+          <h3>Our Services</h3>
+          <p>Everything is designed to look premium, feel clean and stay simple for customers to understand fast.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <article class="service-card glass">
+          <div class="icon">🏠</div>
+          <h4>Full House Deep Cleaning</h4>
+          <p>Complete home cleaning for living room, bedrooms, kitchen, bathrooms, fans, windows and hidden corners.</p>
+        </article>
+        <article class="service-card glass">
+          <div class="icon">🚿</div>
+          <h4>Bathroom Cleaning</h4>
+          <p>Tile scrubbing, tap polishing, stain removal, floor wash and hygienic sanitization for a spotless finish.</p>
+        </article>
+        <article class="service-card glass">
+          <div class="icon">🍳</div>
+          <h4>Kitchen Cleaning</h4>
+          <p>Grease removal, chimney area cleaning, counter sanitization, sink cleaning and cabinet wipe down.</p>
+        </article>
+        <article class="service-card glass">
+          <div class="icon">🛋️</div>
+          <h4>Sofa Cleaning</h4>
+          <p>Vacuum cleaning, foam treatment and dust removal for fabric, leather and recliner sofas.</p>
+        </article>
+        <article class="service-card glass">
+          <div class="icon">🛏️</div>
+          <h4>Mattress Cleaning</h4>
+          <p>Dust removal and freshen-up cleaning for mattresses, pillows and beds to improve comfort and hygiene.</p>
+        </article>
+        <article class="service-card glass">
+          <div class="icon">🚚</div>
+          <h4>Move-in / Move-out Cleaning</h4>
+          <p>Ideal for shifting homes, rental handover, pre-occupancy cleaning and post-vacating cleanup.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="areas">
+      <div class="section-head">
+        <div>
+          <h3>Service Areas in Hyderabad</h3>
+          <p>We cover major Hyderabad locations and nearby localities. Add or remove areas anytime from the JSON data below.</p>
+        </div>
+      </div>
+
+      <div class="grid-4" id="areaCards"></div>
+    </section>
+
+    <section id="why">
+      <div class="section-head">
+        <div>
+          <h3>Why Choose Us</h3>
+          <p>Professional presentation, modern design, and customer-friendly messaging that makes the service look trustworthy and premium.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="feature-card glass">
+          <div class="icon">✨</div>
+          <h4>Premium Finish</h4>
+          <p>Careful detailing, professional cleaning methods and a polished result that looks and feels fresh.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="icon">⏱️</div>
+          <h4>On-Time Service</h4>
+          <p>Quick response through call and WhatsApp with easy booking and flexible visit timings.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="icon">🛡️</div>
+          <h4>Safe & Reliable</h4>
+          <p>Good service behavior, disciplined team support and a neat professional look throughout the process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <div>
+          <h3>Customer Feedback</h3>
+          <p>These testimonial blocks make the site feel more real and trustworthy.</p>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="testimonial glass">
+          <h4>Apartment Deep Cleaning</h4>
+          <p>“Very neat work, on-time team and the home looked fresh after the service.”</p>
+        </div>
+        <div class="testimonial glass">
+          <h4>Bathroom & Kitchen</h4>
+          <p>“Excellent cleaning. The kitchen grease and bathroom stains were handled properly.”</p>
+        </div>
+        <div class="testimonial glass">
+          <h4>Shifting House Cleaning</h4>
+          <p>“Great for move-out cleaning. Smooth booking through WhatsApp and quick response.”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-head">
+        <div>
+          <h3>Contact & Booking</h3>
+          <p>Replace the sample phone number and WhatsApp number with your real details inside the JSON object.</p>
+        </div>
+      </div>
+
+      <div class="grid-2">
+        <div class="contact-card glass">
+          <h4>Call / WhatsApp</h4>
+          <div class="contact-line">📞 <b>Phone:</b> <span id="phoneText"></span></div>
+          <div class="contact-line">💬 <b>WhatsApp:</b> <span id="whatsappText"></span></div>
+          <div class="contact-line">📍 <b>Location:</b> Hyderabad, Telangana</div>
+          <div class="contact-actions">
+            <a class="btn primary" id="callBtn" href="#">Call Now</a>
+            <a class="btn secondary" id="whatsappBtn" href="#" target="_blank" rel="noopener">WhatsApp Now</a>
+          </div>
+        </div>
+
+        <div class="contact-card glass">
+          <h4>Available Localities</h4>
+          <p>Service coverage list is displayed below and can be expanded with your exact target zones.</p>
+          <div class="area-list" id="areaPills"></div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      © <span id="year"></span> Sri Balaji House Cleaning Service • Hyderabad
+    </footer>
+  </main>
+
+  <script>
+    const data = {
+      companyName: "Sri Balaji House Cleaning Service",
+      phone: "+91 83318 85681",
+      whatsapp: "+91 83318 85681",
+      city: "Hyderabad",
+      areas: [
+        "Ameerpet", "Banjara Hills", "Begumpet", "Hitech City", "Madhapur", "Gachibowli",
+        "Kukatpally", "Miyapur", "Kondapur", "SR Nagar", "Secunderabad", "Malkajgiri",
+        "Uppal", "LB Nagar", "Dilsukhnagar", "Koti", "Charminar", "Malakpet",
+        "Jubilee Hills", "Nallagandla", "Manikonda", "Tarnaka"
+      ]
+    };
+
+    const areaCards = document.getElementById('areaCards');
+    const areaPills = document.getElementById('areaPills');
+
+    data.areas.slice(0, 12).forEach((area, index) => {
+      const card = document.createElement('article');
+      card.className = 'area-card glass';
+      card.innerHTML = `
+        <div class="icon">${index % 2 === 0 ? '📍' : '✅'}</div>
+        <h4>${area}</h4>
+        <p>Professional house cleaning service available in and around ${area}.</p>
+      `;
+      areaCards.appendChild(card);
+    });
+
+    data.areas.forEach(area => {
+      const pill = document.createElement('span');
+      pill.textContent = area;
+      areaPills.appendChild(pill);
+    });
+
+    document.getElementById('phoneText').textContent = data.phone;
+    document.getElementById('whatsappText').textContent = data.whatsapp;
+    document.getElementById('callBtn').href = 'tel:' + data.phone.replace(/\s+/g, '');
+    document.getElementById('whatsappBtn').href = 'https://wa.me/' + data.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent('Hi Sri Balaji House Cleaning Service, I need a cleaning service.');
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
